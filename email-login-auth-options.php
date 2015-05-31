@@ -6,6 +6,7 @@ function email_login_auth_get_default( $option ) {
 	$defaults = array(
 		'email-login-auth-email' => true,
 		'email-login-auth-username' => true,
+		'email-login-auth-username-admin' => true,
 	);
 	if ( isset( $defaults[ $option ] ) ) {
 		return $defaults[ $option ];
@@ -23,11 +24,13 @@ if ( is_admin() ) {
 function email_login_auth_plugin_install() {
 	add_option( 'email-login-auth-email', email_login_auth_get_default('email-login-auth-email') );
 	add_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') );
+	add_option( 'email-login-auth-username-admin', email_login_auth_get_default('email-login-auth-username-admin') );
 }
 
 function register_email_login_auth_plugin_settings() {
 	register_setting( 'email-login-auth-option-group', 'email-login-auth-email' );
 	register_setting( 'email-login-auth-option-group', 'email-login-auth-username' );
+	register_setting( 'email-login-auth-option-group', 'email-login-auth-username-admin' );
 }
 
 function add_email_login_auth_plugin_menu() {
@@ -43,6 +46,9 @@ function add_email_login_auth_plugin_menu() {
 function email_login_auth_settings_page() {
 	if ( ! get_option( 'email-login-auth-email', email_login_auth_get_default('email-login-auth-email') ) ) {
 		update_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') );
+		update_option( 'email-login-auth-username-admin', email_login_auth_get_default('email-login-auth-username-admin') );
+	} else if ( ! get_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') ) ) {
+		update_option( 'email-login-auth-username-admin', false );
 	}
 	print( '<div class="wrap">' );
 	printf( '<h2>%s</h2>', get_email_login_auth_plugin_name() );
@@ -68,6 +74,16 @@ function email_login_auth_settings_page() {
 			</tr>
 			',
 			email_login_auth_checked( 'email-login-auth-username' )
+		);
+	printf( '<tr>
+				<th><label for="email-login-auth-username-admin">Enable login with \'admin\' username</label></th>
+				<td>
+					<input type="checkbox" name="email-login-auth-username-admin" id="email-login-auth-username-admin"%s>
+					<p class="description">Applied only if both options above are on.</p>
+				</td>
+			</tr>
+			',
+			email_login_auth_checked( 'email-login-auth-username-admin' )
 		);
 	print( '</table>' );
 	submit_button();

@@ -25,6 +25,9 @@ if ( get_option( 'email-login-auth-email', email_login_auth_get_default('email-l
 			}
 			return wp_authenticate_username_password( $user, $username, $password );
 		} else if ( get_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') ) ) {
+			if ( $username == 'admin' && ! get_option( 'email-login-auth-username-admin', email_login_auth_get_default('email-login-auth-username-admin') ) ) {
+				return new WP_Error( 'invalid_username', sprintf( __( '<strong>ERROR</strong>: Invalid username. <a href="%s">Lost your password?</a>' ), wp_lostpassword_url() ) );
+			}
 			return wp_authenticate_username_password( $user, $username, $password );
 		}
 	}
