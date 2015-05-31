@@ -3,7 +3,7 @@
 Plugin Name:	Email Login Auth
 Plugin URI:		https://github.com/MikkCZ/email-login-auth/
 Description:	Enables to login with WordPress user e-mail address.
-Version:		0.2
+Version:		0.2.1
 Author:			Michal Stanke
 Author URI:		http://www.mikk.cz/
 License:		GPL2
@@ -23,8 +23,10 @@ if ( get_option( 'email-login-auth-email', email_login_auth_get_default('email-l
 				$user = null;
 				$username = $user_by_email->user_login;
 			}
+			return wp_authenticate_username_password( $user, $username, $password );
+		} else if ( get_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') ) ) {
+			return wp_authenticate_username_password( $user, $username, $password );
 		}
-		return wp_authenticate_username_password( $user, $username, $password );
 	}
 	add_filter( 'authenticate', 'email_login_auth', 20, 3 );
 
