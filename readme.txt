@@ -4,7 +4,7 @@ Donate link: http://www.mikk.cz/
 Tags: email, e-mail, username, login, authentication, auth
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,10 +37,16 @@ or
 
 == Changelog ==
 
+= 0.2 =
+* Add an option to disable username login
+
 = 0.1 =
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.2 =
+* Add an option to disable username login
 
 = 0.1 =
 * First public release.
