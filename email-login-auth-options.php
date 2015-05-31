@@ -2,6 +2,18 @@
 
 defined( 'ABSPATH' ) or die();
 
+function email_login_auth_get_default( $option ) {
+	$defaults = array(
+		'email-login-auth-email' => true,
+		'email-login-auth-username' => true,
+	);
+	if ( isset( $defaults[ $option ] ) ) {
+		return $defaults[ $option ];
+	} else {
+		return false;
+	}
+}
+
 register_activation_hook( EMAIL_LOGIN_AUTH_PLUGIN_FILE, 'email_login_auth_plugin_install' );
 if ( is_admin() ) {
 	add_action( 'admin_init', 'register_email_login_auth_plugin_settings' );
@@ -9,11 +21,13 @@ if ( is_admin() ) {
 }
 
 function email_login_auth_plugin_install() {
-	add_option( 'email-login-auth-email', true );
+	add_option( 'email-login-auth-email', email_login_auth_get_default('email-login-auth-email') );
+	add_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') );
 }
 
 function register_email_login_auth_plugin_settings() {
 	register_setting( 'email-login-auth-option-group', 'email-login-auth-email' );
+	register_setting( 'email-login-auth-option-group', 'email-login-auth-username' );
 }
 
 function add_email_login_auth_plugin_menu() {
@@ -27,6 +41,9 @@ function add_email_login_auth_plugin_menu() {
 }
 
 function email_login_auth_settings_page() {
+	if ( ! get_option( 'email-login-auth-email', email_login_auth_get_default('email-login-auth-email') ) ) {
+		update_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') );
+	}
 	print( '<div class="wrap">' );
 	printf( '<h2>%s</h2>', get_email_login_auth_plugin_name() );
 	print( '<form method="post" action="options.php">' );
@@ -40,15 +57,17 @@ function email_login_auth_settings_page() {
 				</td>
 			</tr>
 			',
-			email_login_auth_email_checked()
+			email_login_auth_checked( 'email-login-auth-email' )
 		);
 	printf( '<tr>
-				<th>%1$s</th>
-				<td>%2$s</td>
+				<th><label for="email-login-auth-username">Enable login with username</label></th>
+				<td>
+					<input type="checkbox" name="email-login-auth-username" id="email-login-auth-username"%s>
+					<p class="description">If \'Enable login with e-mail\' is off, this will be enabled automatically.</p>
+				</td>
 			</tr>
 			',
-			__('Status:'),
-			email_login_auth_email_status()
+			email_login_auth_checked( 'email-login-auth-username' )
 		);
 	print( '</table>' );
 	submit_button();
@@ -56,19 +75,11 @@ function email_login_auth_settings_page() {
 	print( '</div>' );
 }
 
-function email_login_auth_email_checked() {
-	if ( get_option( 'email-login-auth-email' ) ) {
+function email_login_auth_checked( $option ) {
+	if ( get_option( $option, email_login_auth_get_default($option) ) ) {
 		return ' checked';
 	} else {
 		return '';
-	}
-}
-
-function email_login_auth_email_status() {
-	if ( get_option( 'email-login-auth-email' ) ) {
-		return __('Enabled');
-	} else {
-		return __('Disabled');
 	}
 }
 
