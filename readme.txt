@@ -1,7 +1,7 @@
 === Email Login Auth ===
 Contributors: mikk_cz
 Donate link: http://www.mikk.cz/
-Tags: email, e-mail, username, login, authentication, auth
+Tags: email, login, authentication, auth, username, admin, users
 Requires at least: 4.0
 Tested up to: 4.2.2
 Stable tag: 0.2.1
