@@ -60,6 +60,7 @@ function email_login_auth_settings_page() {
 				<th><label for="email-login-auth-email">Enable login with e-mail</label></th>
 				<td>
 					<input type="checkbox" name="email-login-auth-email" id="email-login-auth-email"%s>
+					<p class="description">Uncheck to restore default WordPress login authentication (with username).</p>
 				</td>
 			</tr>
 			',
@@ -79,7 +80,7 @@ function email_login_auth_settings_page() {
 				<th><label for="email-login-auth-username-admin">Enable login with \'admin\' username</label></th>
 				<td>
 					<input type="checkbox" name="email-login-auth-username-admin" id="email-login-auth-username-admin"%s>
-					<p class="description">Applied only if both options above are on.</p>
+					<p class="description">This option is applied only if both options above are on. Uncheck to enhance security.</p>
 				</td>
 			</tr>
 			',
