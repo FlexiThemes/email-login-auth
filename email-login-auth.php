@@ -40,7 +40,11 @@ if ( get_option( 'email-login-auth-email', email_login_auth_get_default('email-l
 	function email_login_auth_username_label( $translated_text, $untranslated_text, $domain ) {
 		if ( $untranslated_text == 'Username' ) {
 			remove_filter( current_filter(), __FUNCTION__ );
-			$translated_text .= ' / ' . __('E-mail');
+			if ( get_option( 'email-login-auth-username', email_login_auth_get_default('email-login-auth-username') ) ) {
+				$translated_text .= ' / ' . __('E-mail');
+			} else {
+				$translated_text = __('E-mail');
+			}
 		}
 		return $translated_text;
 	}
