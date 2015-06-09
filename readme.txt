@@ -4,7 +4,7 @@ Donate link: http://www.mikk.cz/
 Tags: email, login, authentication, auth, username, admin, users
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 0.3
+Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ or
 
 == Changelog ==
 
+= 0.4 =
+* Update settings descriptions
+* Better readme.txt
+* Fix form label when username login disabled
+
 = 0.3 =
 * Add an option to disable username login for 'admin' only
 
@@ -53,6 +58,11 @@ or
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.4 =
+* Update settings descriptions
+* Better readme.txt
+* Fix form label when username login disabled
 
 = 0.3 =
 * Add an option to disable username login for 'admin' only
