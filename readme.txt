@@ -1,7 +1,7 @@
 === Email Login Auth ===
 Contributors: mikk_cz
-Donate link: http://www.mikk.cz/
-Tags: email, login, authentication, auth, username, admin, users
+Donate link: https://www.paypal.me/mstanke/100
+Tags: email, login, authentication, auth, username, admin, users, adopt-me
 Requires at least: 4.0
 Tested up to: 4.9.2
 Stable tag: 0.4
@@ -72,4 +72,3 @@ or
 
 = 0.1 =
 * First public release.
-
