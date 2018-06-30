@@ -1,5 +1,5 @@
 === Email Login Auth ===
-Contributors: mikk_cz
+Contributors: flexithemes, mikk_cz
 Donate link: https://www.paypal.me/mstanke/100
 Tags: email, login, authentication, username, adopt-me
 Requires at least: 4.0
