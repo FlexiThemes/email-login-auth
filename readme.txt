@@ -1,7 +1,7 @@
 === Email Login Auth ===
 Contributors: flexithemes, mikk_cz
 Donate link: https://www.paypal.me/mstanke/100
-Tags: email, login, authentication, username, adopt-me
+Tags: email, login, authentication, username
 Requires at least: 4.0
 Tested up to: 4.9.2
 Stable tag: 0.4
@@ -12,7 +12,7 @@ Enables to login with WordPress user e-mail address.
 
 == Description ==
 
-Email Login Auth is a very simple WordPress plugin, which allows users to login with their account e-mail address. Just install, activate it and try to re-login! You can also disable login with username for all users or for 'admin' only.
+Email Login Auth is a very simple WordPress plugin, which allows users to login with their account e-mail address. Just install, activate it and re-login! You can also disable login with username for all users or for 'admin' only.
 
 = How to use =
 * After installation, enable the plugin.
@@ -28,10 +28,10 @@ The plugin settings you can find in WordPress Admin -> Options -> Email Login Au
 
 How to install:
 
-1. In your WordPressu Dashboard, please go to Plugins -> Plugin Install.
+1. In your WordPress Dashboard, please go to Plugins -> Plugin Install.
 2. Search "Email Login Auth".
 3. Click on the "Install Now" button.
-4. After you can "Activate" the plugin in Plugins -> Installed.
+4. Afterward you can "Activate" the plugin in Plugins -> Installed.
 5. Now you and your users will be able to login using their account e-mail address.
 
 == Frequently Asked Questions ==
